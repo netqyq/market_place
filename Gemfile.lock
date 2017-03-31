@@ -128,6 +128,8 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -163,6 +165,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   rspec-rails
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
