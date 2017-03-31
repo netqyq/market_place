@@ -1,8 +1,12 @@
 # Market Place API
 
-market_place is an API service.
-it is completed using TDD.
+market_place is an e-commerence like JSON API service.
+This is built by TDD.
 
+
+
+## Resources
+https://github.com/book-source/rspec_projects
 http://apionrails.icalialabs.com/
 
 
