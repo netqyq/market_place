@@ -48,3 +48,10 @@ group :test do
 end
 
 gem "devise"
+
+# sabisu_rails not compatable with rails 5.0
+# gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+# gem 'compass-rails', '~> 2.0.2'
+# gem 'furatto'
+# gem 'font-awesome-rails'
+# gem 'simple_form'

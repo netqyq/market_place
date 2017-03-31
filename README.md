@@ -10,3 +10,8 @@ https://github.com/book-source/rspec_projects
 http://apionrails.icalialabs.com/
 
 
+
+
+
+## License
+MIT
