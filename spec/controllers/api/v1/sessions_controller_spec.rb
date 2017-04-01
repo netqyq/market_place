@@ -20,6 +20,11 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
       end
       
       it { should respond_with 200}
+
+      it "should login in" do
+        expect(subject.current_user).to_not eq(nil)
+      end
+
     end
 
     context "when the credentials are incorrect" do
@@ -35,5 +40,23 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
       it { should respond_with 422 }
     end
   end
+
+  describe "DELETE #destroy" do
+    before(:each) do 
+      @user = FactoryGirl.create :user
+      sign_in @user
+      delete :destroy, params: {id: @user.auth_token}
+    end
+
+    it { should respond_with 204 }
+
+    it "current_user is nil" do
+      expect(subject.current_user).to eq(nil)
+    end
+
+  end
+
+
+
 
 end
