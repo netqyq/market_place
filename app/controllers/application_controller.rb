@@ -3,4 +3,6 @@ class ApplicationController < ActionController::API
   # For APIs, you may want to use :null_session instead.
   include ActionController::RequestForgeryProtection
   protect_from_forgery with: :null_session, only: Proc.new { |c| c.request.format.json? }
+  
+  include Authenticable
 end

@@ -2,8 +2,11 @@ class Api::V1::SessionsController < ApplicationController
 
   # login process.
   def create
+    puts "=========="
+    p params
     user_password = params[:session][:password]
     user_email = params[:session][:email]
+
 
     user = user_email.present? && User.find_by(email: user_email)
 

@@ -49,4 +49,9 @@ Failures:
        unknown keyword: store
 ```
 
+## Questions
+```
+file: authenticatable_spec.rb
+      allow(authentication).to receive(:request).and_return(request)
 
+```
