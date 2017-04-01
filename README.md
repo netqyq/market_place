@@ -47,7 +47,10 @@ the response, you will receive your token.
 ```
 {"id":1,"email":"example@marketplace.com","created_at":"2017-03-31T03:57:20.013Z","updated_at":"2017-04-01T04:35:16.741Z","auth_token":"fEMvrXpF6KkFxYa5f2Js"}
 ```
-
+### Get User
+```
+curl  -H "Content-Type: application/json, Accept: application/vnd.marketplace.v1" http://api.market.dev:3015/users/1
+```
 
 ## Resources
 https://github.com/book-source/rspec_projects
