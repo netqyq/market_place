@@ -17,7 +17,7 @@ module Request
     end
 
     def api_authorization_header(token)
-      request.headers['Authorization'] =  token
+      request.headers['Authorization'] = token
     end
 
     def include_default_accept_headers
