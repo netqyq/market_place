@@ -53,6 +53,8 @@ end
 
 gem "devise"
 
+gem 'active_model_serializers'
+
 # sabisu_rails not compatable with rails 5.0
 # gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
 # gem 'compass-rails', '~> 2.0.2'
