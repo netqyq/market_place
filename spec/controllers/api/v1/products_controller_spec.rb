@@ -29,4 +29,87 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
 
     it { should respond_with 200}
   end
+
+  describe "POST #create" do
+    context "when is successfully created" do
+      before(:each) do
+        user = FactoryGirl.create :user
+        @product_attributes = FactoryGirl.attributes_for :product 
+        api_authorization_header user.auth_token
+        post :create, params: {user_id: user.id, product: @product_attributes}
+      end
+
+      it "receive json response of just created product" do
+        product_response = json_response
+        expect(product_response[:title]).to eq @product_attributes[:title]  
+      end
+
+      it {should respond_with 201}
+    end 
+
+    context "when is not created" do
+      before(:each) do 
+        user = FactoryGirl.create :user 
+        @invalid_product_attributes = {title: "this is title", price: "Twelve dollars"}
+        api_authorization_header user.auth_token
+        post :create, params: {user_id: user.id, product: @invalid_product_attributes}
+      end
+
+      it "receive error json response" do
+        product_response = json_response
+        expect(product_response[:errors][:price]).to include("is not a number")
+      end
+
+      it {should respond_with 422}
+
+    end
+  end
+
+  describe "PUT #update" do
+    before(:each) do 
+      @user = FactoryGirl.create :user
+      @product = FactoryGirl.create :product, user: @user
+      api_authorization_header @user.auth_token
+    end
+
+    context "when is successfully updated" do
+      before(:each) do
+        put :update, params: { user_id: @user.id, id: @product.id, product: {title: "updated title" } }
+      end
+
+      it "receive json response of just updated product" do
+        product_response = json_response
+        expect(product_response[:title]).to eq "updated title"
+      end
+
+      it {should respond_with 200}
+    end 
+
+    context "when is not updated" do
+      before(:each) do 
+        put :update, params: { user_id: @user.id, id: @product.id, product: {price: "twenty dollars" } }
+      end
+
+      it "receive error json response" do
+        product_response = json_response
+        expect(product_response[:errors][:price]).to include("is not a number")
+      end
+
+      it {should respond_with 422}
+
+    end
+  end
+
+  describe "DELETE #destroy" do
+    before do 
+      @user = FactoryGirl.create :user
+      @product = FactoryGirl.create :product, user: @user
+      api_authorization_header @user.auth_token
+      delete :destroy, params: {user_id: @user.id, id: @product.id}
+    end
+
+    it { should respond_with 204}
+  end
+
+
 end
