@@ -14,9 +14,9 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     order = current_user.orders.build(order_params)
-    logger.debug "==========debug==========="
-    logger.debug order.to_json
+
     if order.save
+      OrderMailer.send_confirmation(order).deliver_later
       render json: order, status: 201, location: [:api, current_user, order]
     else
       render json: { errors: order.errors }, status: 422
