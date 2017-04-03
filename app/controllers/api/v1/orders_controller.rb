@@ -16,6 +16,7 @@ class Api::V1::OrdersController < ApplicationController
     order = current_user.orders.build(order_params)
 
     if order.save
+      order.reload  #we reload the object so the response displays the product objects
       OrderMailer.send_confirmation(order).deliver_later
       render json: order, status: 201, location: [:api, current_user, order]
     else

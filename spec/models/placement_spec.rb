@@ -9,4 +9,7 @@ RSpec.describe Placement, type: :model do
 
   it { should belong_to :order }
   it { should belong_to :product }
+
+  it { should respond_to :product_id }
+  it { should respond_to :quantity }
 end

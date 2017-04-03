@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403034150) do
+ActiveRecord::Schema.define(version: 20170403135228) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20170403034150) do
   create_table "placements", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 0
     t.index ["order_id"], name: "index_placements_on_order_id"
     t.index ["product_id"], name: "index_placements_on_product_id"
   end
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170403034150) do
     t.boolean  "published",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "quantity",   default: 0
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
