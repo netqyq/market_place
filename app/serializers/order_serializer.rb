@@ -1,3 +1,4 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :total
+  attributes :id, :total
+  has_many :products, serializer: OrderProductSerializer
 end
