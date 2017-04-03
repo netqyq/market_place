@@ -12,7 +12,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def index
-    products = Product.all
+    products = Product.search(params)
     render json: products, status: 200
   end
 
