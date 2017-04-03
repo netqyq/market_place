@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
   validates :auth_token, uniqueness: true
 
 
