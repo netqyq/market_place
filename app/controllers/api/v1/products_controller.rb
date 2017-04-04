@@ -13,6 +13,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def index
     products = Product.search(params).page(params[:page]).per(params[:per_page])
+    #logger.debug products
     render json: products, adapter: :json, meta: { pagination:
                                    { per_page: params[:per_page],
                                      total_pages: products.total_pages,
