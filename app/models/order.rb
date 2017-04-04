@@ -8,6 +8,8 @@ class Order < ApplicationRecord
   has_many :placements
   has_many :products, through: :placements
 
+  validates_with EnoughProductsValidator # for the custom validator
+
   def set_total!
     self.total = products.map(&:price).sum
   end
