@@ -56,7 +56,10 @@ gem "devise"
 
 gem 'active_model_serializers'
 gem 'kaminari'
-# sabisu_rails not compatable with rails 5.0
+
+gem 'delayed_job_active_record'
+
+# sabisu_rails not compatable with rails 5.0 now.
 # gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
 # gem 'compass-rails', '~> 2.0.2'
 # gem 'furatto'

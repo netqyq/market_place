@@ -52,6 +52,11 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
+      delayed_job (>= 3.0, < 5)
     devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -189,6 +194,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   byebug
+  delayed_job_active_record
   devise
   email_spec
   factory_girl_rails
