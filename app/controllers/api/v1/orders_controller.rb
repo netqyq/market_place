@@ -6,10 +6,7 @@ class Api::V1::OrdersController < ApplicationController
   def index
     orders = Order.where(user: current_user).page(params[:page]).per(params[:per_page])
     logger.debug orders
-    render json: orders, adapter: :json, meta: { pagination:
-                                   { per_page: params[:per_page],
-                                     total_pages: orders.total_pages,
-                                     total_objects: orders.total_count } }
+    render json: orders, adapter: :json, meta: pagination(orders, params[:per_page])
  
   end
 
