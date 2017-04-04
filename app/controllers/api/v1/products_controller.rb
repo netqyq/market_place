@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create]
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   respond_to :json
   
   def show
@@ -12,8 +12,11 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def index
-    products = Product.search(params)
-    render json: products, status: 200
+    products = Product.search(params).page(params[:page]).per(params[:per_page])
+    render json: products, adapter: :json, meta: { pagination:
+                                   { per_page: params[:per_page],
+                                     total_pages: products.total_pages,
+                                     total_objects: products.total_count } }
   end
 
   def create
@@ -39,6 +42,15 @@ class Api::V1::ProductsController < ApplicationController
     product.destroy
     head 204
   end
+
+  def pagination_dict(collection)
+    {
+      per_page: collection.per_page,
+      total_pages: collection.total_pages,
+      total_objects: collection.total_count
+    }
+  end
+
 
   private
 
