@@ -59,6 +59,7 @@ gem 'kaminari'
 
 gem 'delayed_job_active_record'
 
+gem 'redis-rails'
 # sabisu_rails not compatable with rails 5.0 now.
 # gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
 # gem 'compass-rails', '~> 2.0.2'
