@@ -34,4 +34,16 @@ class Product < ApplicationRecord
 
     products
   end
+
+  def self.cached_find(id)
+    Rails.cache.fetch(['product', id], expires_in: 5.minutes) { find(id) }
+  end
+
+  after_commit :flush_cache
+
+  private
+
+    def flush_cache
+      Rails.cache.delete(['product', id])
+    end
 end

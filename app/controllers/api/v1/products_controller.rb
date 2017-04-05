@@ -7,7 +7,8 @@ class Api::V1::ProductsController < ApplicationController
     #respond_with Product.find(params[:id])
 
     # replace respond_with to below
-    product = Product.find(params[:id])
+    #product = Product.find(params[:id])
+    product = Product.cached_find(params[:id])
     render json: product, status: 200
   end
 
