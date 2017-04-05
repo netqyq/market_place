@@ -112,7 +112,7 @@ rails s -p 3015
 3. Every page that requires authentication, the client has to send that authentication token
 
 
-### 1. Create session. User send its credentials to server.
+### Create session. User send its credentials to server.
 
 sending post request with your email and password, for getting token.
 ```
@@ -123,14 +123,14 @@ the response, you will receive your token.
 ```
 {"id":1,"email":"example@marketplace.com","created_at":"2017-03-31T03:57:20.013Z","updated_at":"2017-04-01T04:35:16.741Z","auth_token":"fEMvrXpF6KkFxYa5f2Js"}
 ```
-### 2. Send other requests. for instance `Get` a user
+### Send other requests. for instance `Get` a user
 ```
 curl  -H "Content-Type: application/json, Accept: application/vnd.marketplace.v1" http://api.market.dev:3015/users/1
 ```
 
 ## Run RSpec
 
-all tests are green passing now.
+all tests are green and passing now.
 
 ```
 rspec spec/controllers/api/v1/
