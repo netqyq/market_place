@@ -2,6 +2,8 @@
 
 market_place is an E-commerence JSON API service.
 
+## Code Status
+[![Build Status](https://travis-ci.org/netqyq/market_place.svg?branch=master)](https://travis-ci.org/netqyq/market_place)
 
 ## Ruby Version
 ```
