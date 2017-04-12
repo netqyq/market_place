@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe OrderMailerMailer, type: :mailer do
+RSpec.describe OrderMailer, type: :mailer do
 
 
 
