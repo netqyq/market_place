@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: "no-reply@marketplace.com"
+  default from: 'no-reply@marketplace.com'
 
   def send_confirmation(order)
     @order = order
