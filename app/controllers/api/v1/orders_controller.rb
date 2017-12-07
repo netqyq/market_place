@@ -9,8 +9,8 @@ module Api
         orders = Order.where(user: current_user)
                       .page(params[:page]).per(params[:per_page])
         logger.debug orders
-        render json: orders, :adapter => :json,
-                     :meta => pagination(orders, params[:per_page])
+        render json: orders, adapter: :json,
+               meta: pagination(orders, params[:per_page])
       end
 
       def show
@@ -23,8 +23,8 @@ module Api
 
         if order.save
           order.reload
-          #we reload the object so the response displays the product objects
-          #OrderMailer.send_confirmation(order).deliver_later
+          # we reload the object so the response displays the product objects
+          # OrderMailer.send_confirmation(order).deliver_later
           OrderMailer.delay.send_confirmation(order)
           render json: order, status: 201, location: [:api, current_user, order]
         else
@@ -32,12 +32,11 @@ module Api
         end
       end
 
-    private
+      private
 
       def order_params
         params.require(:order).permit(product_ids: [])
       end
-
     end
   end
 end
