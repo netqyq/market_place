@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ruby:2.3
+      - image: postgres:9.4.1
+        environment:
+          POSTGRES_USER: root
+
+    working_directory: ~/cci-demo-rails
+    steps:
+      - checkout
+      - run: apt-get update -qq && apt-get install -y build-essential nodejs
+      - run: bundle install
+      - run: bundle exec rake db:create db:schema:load --trace
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rake test
